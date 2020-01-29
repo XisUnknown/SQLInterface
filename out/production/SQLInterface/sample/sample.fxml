@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="794.0" prefWidth="1442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane prefHeight="794.0" prefWidth="1115.0">
+         <children>
+            <Button layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#connectServer" text="connect" />
+            <TableView fx:id="Result" layoutX="510.0" layoutY="99.0" prefHeight="689.0" prefWidth="924.0" />
+            <Label layoutX="10.0" layoutY="14.0" text="SQLInterface" />
+            <Label layoutX="20.0" layoutY="191.0" text="Database:" />
+            <Label fx:id="conLabel" layoutX="84.0" layoutY="152.0" text="Disconnected" />
+            <ComboBox fx:id="selectBox" layoutX="18.0" layoutY="216.0" onAction="#selectedDatabase" prefHeight="25.0" prefWidth="155.0" promptText="select database" />
+            <TableView fx:id="TablesView" layoutX="349.0" layoutY="99.0" prefHeight="411.0" prefWidth="149.0" />
+            <Label layoutX="17.0" layoutY="46.0" text="Serveradresse/port:" />
+            <TextField fx:id="server" layoutX="16.0" layoutY="63.0" prefHeight="25.0" prefWidth="1417.0" text="jdbc:mysql://localhost:3306/?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Berlin" />
+            <Label layoutX="18.0" layoutY="99.0" text="Username:" />
+            <TextField fx:id="username" layoutX="18.0" layoutY="116.0" text="root" />
+            <Label layoutX="176.0" layoutY="99.0" text="Password:" />
+            <TextField fx:id="password" layoutX="176.0" layoutY="116.0" />
+            <TabPane layoutX="20.0" layoutY="255.0" prefHeight="517.0" prefWidth="318.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="New Query">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="input" layoutX="6.0" layoutY="52.0" prefHeight="432.0" prefWidth="308.0" text="SELECT * FROM cars WHERE 1" wrapText="true" />
+                              <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#displayQueryResult" text="send query" />
+                              <CheckBox fx:id="SaveQuery" layoutX="134.0" layoutY="18.0" mnemonicParsing="false" text="Save Query" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Saved Queries">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="savedQueries" layoutY="58.0" onMouseClicked="#displaypreviousQueryResult" prefHeight="437.0" prefWidth="318.0" />
+                              <Button layoutX="108.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteSavedQuery" text="Delete" />
+                              <Button layoutX="178.0" layoutY="15.0" mnemonicParsing="false" onAction="#exportFile" text="Export" />
+                              <Button layoutX="252.0" layoutY="15.0" mnemonicParsing="false" onAction="#importFile" text="Import" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Label fx:id="queryInfo" alignment="TOP_LEFT" layoutX="349.0" layoutY="521.0" prefHeight="264.0" prefWidth="149.0" wrapText="true" />
+            <Button layoutX="177.0" layoutY="148.0" mnemonicParsing="false" onAction="#closeConnection" prefHeight="25.0" prefWidth="111.0" text="disconnect" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
