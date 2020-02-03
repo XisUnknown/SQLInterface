@@ -82,8 +82,8 @@ public class Controller {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Open Resource File");
     fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
-    //File selectedFile = fileChooser.showOpenDialog(null);
-    File selectedFile = new File("data3.txt");
+    File selectedFile = fileChooser.showOpenDialog(null);
+    //File selectedFile = new File("data3.txt");
     FileWriter fr = new FileWriter(selectedFile, true);
     BufferedWriter bw = new BufferedWriter(fr);
     for (int i = 0;i<savedQueries.getItems().size();i++){

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sqlinterface" default="all">
+  
+  
+  <property file="sqlinterface.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.klib"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.13" value="${jdk.home.13}/bin"/>
+  <path id="jdk.classpath.13">
+    <fileset dir="${jdk.home.13}">
+      <include name="../jdk-13.0.1!/java.base"/>
+      <include name="../jdk-13.0.1!/java.compiler"/>
+      <include name="../jdk-13.0.1!/java.datatransfer"/>
+      <include name="../jdk-13.0.1!/java.desktop"/>
+      <include name="../jdk-13.0.1!/java.instrument"/>
+      <include name="../jdk-13.0.1!/java.logging"/>
+      <include name="../jdk-13.0.1!/java.management"/>
+      <include name="../jdk-13.0.1!/java.management.rmi"/>
+      <include name="../jdk-13.0.1!/java.naming"/>
+      <include name="../jdk-13.0.1!/java.net.http"/>
+      <include name="../jdk-13.0.1!/java.prefs"/>
+      <include name="../jdk-13.0.1!/java.rmi"/>
+      <include name="../jdk-13.0.1!/java.scripting"/>
+      <include name="../jdk-13.0.1!/java.se"/>
+      <include name="../jdk-13.0.1!/java.security.jgss"/>
+      <include name="../jdk-13.0.1!/java.security.sasl"/>
+      <include name="../jdk-13.0.1!/java.smartcardio"/>
+      <include name="../jdk-13.0.1!/java.sql"/>
+      <include name="../jdk-13.0.1!/java.sql.rowset"/>
+      <include name="../jdk-13.0.1!/java.transaction.xa"/>
+      <include name="../jdk-13.0.1!/java.xml"/>
+      <include name="../jdk-13.0.1!/java.xml.crypto"/>
+      <include name="../jdk-13.0.1!/jdk.accessibility"/>
+      <include name="../jdk-13.0.1!/jdk.aot"/>
+      <include name="../jdk-13.0.1!/jdk.attach"/>
+      <include name="../jdk-13.0.1!/jdk.charsets"/>
+      <include name="../jdk-13.0.1!/jdk.compiler"/>
+      <include name="../jdk-13.0.1!/jdk.crypto.cryptoki"/>
+      <include name="../jdk-13.0.1!/jdk.crypto.ec"/>
+      <include name="../jdk-13.0.1!/jdk.crypto.mscapi"/>
+      <include name="../jdk-13.0.1!/jdk.dynalink"/>
+      <include name="../jdk-13.0.1!/jdk.editpad"/>
+      <include name="../jdk-13.0.1!/jdk.hotspot.agent"/>
+      <include name="../jdk-13.0.1!/jdk.httpserver"/>
+      <include name="../jdk-13.0.1!/jdk.internal.ed"/>
+      <include name="../jdk-13.0.1!/jdk.internal.jvmstat"/>
+      <include name="../jdk-13.0.1!/jdk.internal.le"/>
+      <include name="../jdk-13.0.1!/jdk.internal.opt"/>
+      <include name="../jdk-13.0.1!/jdk.internal.vm.ci"/>
+      <include name="../jdk-13.0.1!/jdk.internal.vm.compiler"/>
+      <include name="../jdk-13.0.1!/jdk.internal.vm.compiler.management"/>
+      <include name="../jdk-13.0.1!/jdk.jartool"/>
+      <include name="../jdk-13.0.1!/jdk.javadoc"/>
+      <include name="../jdk-13.0.1!/jdk.jcmd"/>
+      <include name="../jdk-13.0.1!/jdk.jconsole"/>
+      <include name="../jdk-13.0.1!/jdk.jdeps"/>
+      <include name="../jdk-13.0.1!/jdk.jdi"/>
+      <include name="../jdk-13.0.1!/jdk.jdwp.agent"/>
+      <include name="../jdk-13.0.1!/jdk.jfr"/>
+      <include name="../jdk-13.0.1!/jdk.jlink"/>
+      <include name="../jdk-13.0.1!/jdk.jshell"/>
+      <include name="../jdk-13.0.1!/jdk.jsobject"/>
+      <include name="../jdk-13.0.1!/jdk.jstatd"/>
+      <include name="../jdk-13.0.1!/jdk.localedata"/>
+      <include name="../jdk-13.0.1!/jdk.management"/>
+      <include name="../jdk-13.0.1!/jdk.management.agent"/>
+      <include name="../jdk-13.0.1!/jdk.management.jfr"/>
+      <include name="../jdk-13.0.1!/jdk.naming.dns"/>
+      <include name="../jdk-13.0.1!/jdk.naming.rmi"/>
+      <include name="../jdk-13.0.1!/jdk.net"/>
+      <include name="../jdk-13.0.1!/jdk.pack"/>
+      <include name="../jdk-13.0.1!/jdk.rmic"/>
+      <include name="../jdk-13.0.1!/jdk.scripting.nashorn"/>
+      <include name="../jdk-13.0.1!/jdk.scripting.nashorn.shell"/>
+      <include name="../jdk-13.0.1!/jdk.sctp"/>
+      <include name="../jdk-13.0.1!/jdk.security.auth"/>
+      <include name="../jdk-13.0.1!/jdk.security.jgss"/>
+      <include name="../jdk-13.0.1!/jdk.unsupported"/>
+      <include name="../jdk-13.0.1!/jdk.unsupported.desktop"/>
+      <include name="../jdk-13.0.1!/jdk.xml.dom"/>
+      <include name="../jdk-13.0.1!/jdk.zipfs"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.13}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.13}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.13"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${basedir}/../../Documents/javafx-sdk-13.0.1/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.mysql-connector-java-8.0.classpath">
+    <fileset dir="D:/Java/mysql-connector-java-8.0.18">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.lib.classpath">
+    <fileset dir="C:/Users/Wojciech Schlesinger/Documents/javafx-sdk-11.0.2/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module SQLInterface -->
+  
+  <dirname property="module.sqlinterface.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.sqlinterface" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.sqlinterface" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.sqlinterface" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.sqlinterface" value="-encoding UTF-8 -source 13 -target 13 ${compiler.args}"/>
+  
+  <property name="sqlinterface.output.dir" value="${module.sqlinterface.basedir}/out/production/SQLInterface"/>
+  <property name="sqlinterface.testoutput.dir" value="${module.sqlinterface.basedir}/out/test/SQLInterface"/>
+  
+  <path id="sqlinterface.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="sqlinterface.module.production.classpath">
+    <path refid="${module.jdk.classpath.sqlinterface}"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+  </path>
+  
+  <path id="sqlinterface.runtime.production.module.classpath">
+    <pathelement location="${sqlinterface.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+  </path>
+  
+  <path id="sqlinterface.module.classpath">
+    <path refid="${module.jdk.classpath.sqlinterface}"/>
+    <pathelement location="${sqlinterface.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+  </path>
+  
+  <path id="sqlinterface.runtime.module.classpath">
+    <pathelement location="${sqlinterface.testoutput.dir}"/>
+    <pathelement location="${sqlinterface.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.sqlinterface">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.sqlinterface">
+    <patternset refid="excluded.from.module.sqlinterface"/>
+  </patternset>
+  
+  <path id="sqlinterface.module.sourcepath">
+    <dirset dir="${module.sqlinterface.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.sqlinterface" depends="compile.module.sqlinterface.production,compile.module.sqlinterface.tests" description="Compile module SQLInterface"/>
+  
+  <target name="compile.module.sqlinterface.production" depends="register.custom.compilers" description="Compile module SQLInterface; production classes">
+    <mkdir dir="${sqlinterface.output.dir}"/>
+    <javac2 destdir="${sqlinterface.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sqlinterface}/javac">
+      <compilerarg line="${compiler.args.sqlinterface}"/>
+      <bootclasspath refid="sqlinterface.module.bootclasspath"/>
+      <classpath refid="sqlinterface.module.production.classpath"/>
+      <src refid="sqlinterface.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sqlinterface"/>
+    </javac2>
+    
+    <copy todir="${sqlinterface.output.dir}">
+      <fileset dir="${module.sqlinterface.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.sqlinterface.tests" depends="register.custom.compilers,compile.module.sqlinterface.production" description="compile module SQLInterface; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.sqlinterface" description="cleanup module">
+    <delete dir="${sqlinterface.output.dir}"/>
+    <delete dir="${sqlinterface.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.sqlinterface, clean.artifact.sqlinterface" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.sqlinterface" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.sqlinterface" value="${basedir}/out/artifacts/SQLInterface"/>
+    <property name="artifact.output.sqlinterface:jar" value="${basedir}/out/artifacts/SQLInterface_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="artifact.temp.output.SQLInterface" value="${artifacts.temp.dir}/SQLInterface.jar"/>
+    <property name="temp.jar.path.SQLInterface.jar" value="${artifacts.temp.dir}/1/SQLInterface.jar"/>
+    <mkdir dir="${artifacts.temp.dir}/1"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.13}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.sqlinterface" description="clean SQLInterface artifact output">
+    <delete dir="${artifact.output.sqlinterface}"/>
+  </target>
+  
+  <target name="artifact.sqlinterface" depends="init.artifacts, compile.module.sqlinterface" description="Build &#39;SQLInterface&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.sqlinterface}"/>
+    <copy todir="${artifact.temp.output.SQLInterface}">
+      <fileset dir="${sqlinterface.output.dir}"/>
+    </copy>
+    <fx:fileset id="all_but_SQLInterface" dir="${artifact.temp.output.SQLInterface}" includes="**/*.jar">
+      <exclude name="SQLInterface.jar"/>
+    </fx:fileset>
+    <fx:fileset id="all_SQLInterface" dir="${artifact.temp.output.SQLInterface}" includes="**/*.jar"/>
+    <fx:application id="SQLInterface_id" name="SQLInterface" mainClass="
